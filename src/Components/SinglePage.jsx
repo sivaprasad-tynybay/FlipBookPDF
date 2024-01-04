@@ -26,7 +26,7 @@ export default function SinglePage(props) {
     }
 
     fetchAndConvertPDF();
-  }, [pdf, pageNumber]); // Include 'pdf' in dependencies to trigger updates when 'pdf' prop changes
+  }, [pdf, pageNumber]); 
 
   async function extractTextFromLocalPDFPage(pdfFile, pageNumber) {
     try {
@@ -45,7 +45,7 @@ export default function SinglePage(props) {
       return pageText;
     } catch (error) {
       console.error("Error extracting text:", error);
-      return ""; // Return empty string in case of error
+      return ""; 
     }
   }
 
