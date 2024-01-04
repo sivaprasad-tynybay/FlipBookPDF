@@ -9,6 +9,7 @@ import samplePDF3 from "../sample3.pdf";
 import samplePDF4 from "../sample4.pdf";
 import samplePDF5 from "../sample5.pdf";
 import samplePDF6 from "../sample6.pdf";
+import TextToSpeech from './TextToSpeech';
 
 const Page = React.forwardRef((props, ref) => {
     return (
@@ -33,8 +34,10 @@ function MyBook(props) {
           return prevNumPages;
         });
       }
-  
+      const text =
+      "Text-to-speech feature is now available on fairly any website, blog or newsletter like Substack. It's a game changer that you can listen to the content instead of reading it. Especially effective for people with visual or cognitive impairments or people who are on the go. I came up with the idea to implement it for my blog, so this is how I started doing a research on this topic which ended up being a tutorial for you. So in this tutorial, we will go through the process of building a text-to-speech component in React. We will use the Web Speech API to implement the text-to-speech functionality.";
     return (
+        <>
         <HTMLFlipBook width={300} height={500} size="stretch"  minWidth={315}
         maxWidth={1000}
         minHeight={400}
@@ -49,9 +52,15 @@ function MyBook(props) {
       <Page number="4"><SinglePage pdf={FundamentalsofComputerStudies} onLoadDoc={handlePages} pageNumber={4}></SinglePage></Page> */}
       {Array.from(new Array(numOfPages), (el, index) => (
         //   <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-        <Page key={`page_${index + 1}`} number={index + 1}><SinglePage pdf={samplePDF} onLoadDoc={numPages => index === 0 ? handlePages(numPages) : null} pageNumber={index + 1}></SinglePage></Page>
+        <Page key={`page_${index + 1}`} number={index + 1}>
+            <SinglePage pdf={samplePDF} onLoadDoc={numPages => index === 0 ? handlePages(numPages) : null} pageNumber={index + 1}>
+                
+            </SinglePage>
+            {/* <TextToSpeech text={text}></TextToSpeech> */}
+        </Page>
         ))}
         </HTMLFlipBook>
+        </>
     );
 }
 
